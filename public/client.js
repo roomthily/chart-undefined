@@ -56,13 +56,18 @@ $(function() {
       .attr("font-size", "11px")  // Font size
       .attr("fill", "darkgreen");   // Font color
     
+    
+    var x_axis = d3.axisBottom(xScale);
 
     svg.append("g")
       .attr("transform", "translate(0," + height + ")")
-      .call(d3.axisBottom(xScale));
+      .call(x_axis);
 
     svg.append("g")
       .call(d3.axisLeft(yScale));
+    
+    // bin the tick labels
+    svg.select('g').call(x_axis).selectAll("text").remove();
     
   });
 
