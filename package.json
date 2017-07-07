@@ -10,8 +10,9 @@
     "express": "^4.15.3",
     "d3": "^4.9.1",
     "line-interpolate-points": "^1.0.5",
-    "svg2png": "^4.1.1",
-    "d3-node": "^1.0.3"
+    "d3-node": "^1.0.3",
+    "phantomjs-prebuilt": "^2.1.14",
+    "svg2png": "^4.1.1"
   },
   "engines": {
     "node": "8.1.x"
