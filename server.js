@@ -8,7 +8,6 @@ var interp = require('line-interpolate-points');
 var d3n = require('d3-node');
 var d3 = require('d3');
 var svg2png = require('svg2png');
-var fs = require('fs');
 
 // if there's an epipe problem:
 // npm rebuild phantomjs-prebuilt
@@ -54,47 +53,10 @@ app.get("/chart", function (request, response) {
   } else if (mime == 'image/png') {
     var svg = _chart(interpolated);
     
-    // console.log(svg);
-    
-    //__dirname + '/assets/glitch.png',
-    
-    // convert the svg to a png
-    
-    // first the svg to a buffer (skipping the file read)
-    // var buffer = Buffer.from(svg, 'utf-8');
-    
-    // write the svg to a temp file
-    // under /tmp
-    // oh ffs it's async callback hell
-//     try {
-//       fs.writeFileSync('/tmp/generated.svg', svg, 'utf-8');
-//     } catch (e) {
-//       console.log('file write error: ', e)
-//     }
-    
-//     console.log('file:', fs.existsSync('/tmp/generated.svg'));
-    
     svg2png(svg).then(img => {
-          console.log('i have the image');
-          response.send(img);
-        });
- 
-    
-//     fs.readFile('/tmp/generated.svg', "utf-8", (err, data) => {
-//       if (err) {
-//         console.log('file read error:', err);
-//         response.send();
-//       }
-//       // console.log(err);
-//       // console.log(data);
-      
-//       // something with phantom.js writing to a closed pipe
-//       // dunno how to fix that here
-//       svg2png(data).then(img => {
-//           console.log('i have the image');
-//           response.send(img);
-//         });
-//     });
+        console.log('i have the image');
+        response.send(img);
+      });
 
   } else {
     // send the "raw" svg
